@@ -23,8 +23,8 @@ Non-parametric learning algorithm − KNN is also a non-parametric learning algo
 ```
 /*
 Program to implement KNN classification algorithm.
-Developed by   :
-RegisterNumber :  
+Developed by   : JANANI D
+RegisterNumber : 212220040056
 # k-nearest neighbors on the Iris Flowers Dataset
 from random import seed
 from random import randrange
