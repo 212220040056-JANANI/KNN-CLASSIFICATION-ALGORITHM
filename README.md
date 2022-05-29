@@ -23,6 +23,8 @@ Non-parametric learning algorithm − KNN is also a non-parametric learning algo
 <br>
 <br>
 <br>
+<br>
+<br>
 
 ## PROGRAM:
 ```
@@ -51,8 +53,7 @@ def load_csv(filename):
 def str_column_to_float(dataset, column):
 	for row in dataset:
 		row[column] = float(row[column].strip())
- 
-# Convert string column to integer
+ # Convert string column to integer
 def str_column_to_int(dataset, column):
 	class_values = [row[column] for row in dataset]
 	unique = set(class_values)
@@ -62,8 +63,7 @@ def str_column_to_int(dataset, column):
 	for row in dataset:
 		row[column] = lookup[row[column]]
 	return lookup
- 
-# Find the min and max values for each column
+ # Find the min and max values for each column
 def dataset_minmax(dataset):
 	minmax = list()
 	for i in range(len(dataset[0])):
@@ -72,14 +72,12 @@ def dataset_minmax(dataset):
 		value_max = max(col_values)
 		minmax.append([value_min, value_max])
 	return minmax
- 
-# Rescale dataset columns to the range 0-1
+ # Rescale dataset columns to the range 0-1
 def normalize_dataset(dataset, minmax):
 	for row in dataset:
 		for i in range(len(row)):
 			row[i] = (row[i] - minmax[i][0]) / (minmax[i][1] - minmax[i][0])
- 
-# Split a dataset into k folds
+ # Split a dataset into k folds
 def cross_validation_split(dataset, n_folds):
 	dataset_split = list()
 	dataset_copy = list(dataset)
@@ -91,16 +89,14 @@ def cross_validation_split(dataset, n_folds):
 			fold.append(dataset_copy.pop(index))
 		dataset_split.append(fold)
 	return dataset_split
- 
-# Calculate accuracy percentage
+ # Calculate accuracy percentage
 def accuracy_metric(actual, predicted):
 	correct = 0
 	for i in range(len(actual)):
 		if actual[i] == predicted[i]:
 			correct += 1
 	return correct / float(len(actual)) * 100.0
- 
-# Evaluate an algorithm using a cross validation split
+ # Evaluate an algorithm using a cross validation split
 def evaluate_algorithm(dataset, algorithm, n_folds, *args):
 	folds = cross_validation_split(dataset, n_folds)
 	scores = list()
@@ -118,15 +114,13 @@ def evaluate_algorithm(dataset, algorithm, n_folds, *args):
 		accuracy = accuracy_metric(actual, predicted)
 		scores.append(accuracy)
 	return scores
- 
-# Calculate the Euclidean distance between two vectors
+ # Calculate the Euclidean distance between two vectors
 def euclidean_distance(row1, row2):
 	distance = 0.0
 	for i in range(len(row1)-1):
 		distance += (row1[i] - row2[i])**2
 	return sqrt(distance)
- 
-# Locate the most similar neighbors
+ # Locate the most similar neighbors
 def get_neighbors(train, test_row, num_neighbors):
 	distances = list()
 	for train_row in train:
@@ -137,15 +131,13 @@ def get_neighbors(train, test_row, num_neighbors):
 	for i in range(num_neighbors):
 		neighbors.append(distances[i][0])
 	return neighbors
- 
-# Make a prediction with neighbors
+ # Make a prediction with neighbors
 def predict_classification(train, test_row, num_neighbors):
 	neighbors = get_neighbors(train, test_row, num_neighbors)
 	output_values = [row[-1] for row in neighbors]
 	prediction = max(set(output_values), key=output_values.count)
 	return prediction
- 
-# kNN Algorithm
+ # KNN Algorithm
 def k_nearest_neighbors(train, test, num_neighbors):
 	predictions = list()
 	for row in test:
@@ -170,10 +162,8 @@ print('Scores: %s' % scores)
 print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 */
 ```
-
 ## OUTPUT:
 ![output](https://user-images.githubusercontent.com/86832944/169459498-27255ef1-2a78-4148-ae30-1cde9fc21e4a.png)
 
-
 ## RESULT:
-Thus the python program successully implemented KNN classification algorithm.
+Thus the KNN classification algorithm using python program is implemented successfully.
